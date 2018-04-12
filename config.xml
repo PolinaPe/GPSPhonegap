@@ -29,7 +29,7 @@ xmlns:gap="http://phonegap.com/ns/1.0">
 	<allow-intent href="http://*/*" />
 <allow-intent href="https://*/*" />
 <allow-intent href="geo:*" />
-<gap:plugin name="cordova-plugin-geolocation" source="npm" />
+<plugin name="cordova-plugin-geolocation" spec="4.0.1" />
 <plugin name="cordova-plugin-whitelist" spec="1.1.0" />
 
 
