@@ -19,7 +19,7 @@ xmlns:gap="http://phonegap.com/ns/1.0">
 
 <author  email="veter_peremen_i@mail.ru" href="http://phonegap.com">
         Polina Wilke    </author>
- 
+ <preference name="permissions" value="none"/>
  <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 
