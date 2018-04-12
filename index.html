@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GPS Daten</title>
+	<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="jquery.mobile.icons.min.css" />
+    <script type="text/javascript" src="jquery-1.9.js"></script>
+    <script type="text/javascript" src="jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+
+</head>
+<body onload="onLoad()">
+	<div data-role="page" id="homePage" data-theme="a">
+		<div data-role="header">
+ 
+      <span>GPS Example</span>
+  
+</div>		
+		</div>
+		<div data-role="content" data-theme="a">
+			
+			<button onclick="positionBekommen();">Position</button><br/>
+			<button onclick="positionFolgen();">Position verfolgen</button>	
+			
+		</div>		
+		<div data-role="footer" data-theme="a">		
+		</div>
+	</div>
+	<script>
+        function onLoad() {
+              document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        console.log("navigator.geolocation works well");
+    }
+        }
+ function positionBekommen() {
+   var options = {
+      enableHighAccuracy: true,
+      maximumAge: 3600000
+   }
+   var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+
+   function onSuccess(position) {
+      alert('Breitegrad: '          + position.coords.latitude          + '\n' +
+        'Laengengrad: '         + position.coords.longitude         + '\n' +
+         'Hoehe: '          + position.coords.altitude          + '\n' +
+         'Genauigkeit: '          + position.coords.accuracy          + '\n' +
+         'Hoehegenauigkeit: ' + position.coords.altitudeAccuracy  + '\n' +
+         'Richtung: '           + position.coords.heading           + '\n' +
+         'Geschwingdigkeit: '             + position.coords.speed             + '\n' +
+         'Zeitstempel: '         + position.timestamp                + '\n');
+   };
+
+   function onError(error) {
+      alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+   }
+}
+
+function positionFolgen() {
+   var options = {
+      maximumAge: 3600000,
+      timeout: 3000,
+      enableHighAccuracy: true,
+   }
+   var watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+
+   function onSuccess(position) {
+      alert('Breitegrad: '          + position.coords.latitude          + '\n' +
+        'Laengengrad: '         + position.coords.longitude         + '\n' +
+         'Hoehe: '          + position.coords.altitude          + '\n' +
+         'Genauigkeit: '          + position.coords.accuracy          + '\n' +
+         'Hoehegenauigkeit: ' + position.coords.altitudeAccuracy  + '\n' +
+         'Richtung: '           + position.coords.heading           + '\n' +
+         'Geschwingdigkeit: '             + position.coords.speed             + '\n' +
+         'Zeitstempel: '         + position.timestamp                + '\n');
+   };
+
+   function onError(error) {
+      alert('code: '    + error.code    + '\n' +'message: ' + error.message + '\n');
+   }
+}
+       
+        </script>
+
+</body>
+</html>
